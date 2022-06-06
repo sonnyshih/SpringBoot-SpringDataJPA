@@ -18,7 +18,7 @@ public class SpringDataJpaApplication {
         return (args -> {
 //			insertJavaAdvocates(repository);
 //			System.out.println(repository.findAll());
-            System.out.println(repository.findByNameContains("ti"));
+//            System.out.println(repository.findByNameContains("ti"));
         });
 
     }
