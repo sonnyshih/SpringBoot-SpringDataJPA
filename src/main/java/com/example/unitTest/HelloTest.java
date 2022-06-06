@@ -1,12 +1,12 @@
-package com.example.springDataJPA;
+package com.example.unitTest;
 
+import com.example.springDataJPA.AnimalRepository;
+import com.example.springDataJPA.SpringDataJpaApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
-
-@SpringBootTest
+@SpringBootTest(classes = SpringDataJpaApplication.class)
 public class HelloTest {
 
     @Autowired
