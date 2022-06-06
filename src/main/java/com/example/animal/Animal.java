@@ -1,4 +1,4 @@
-package com.example.springDataJPA;
+package com.example.animal;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
