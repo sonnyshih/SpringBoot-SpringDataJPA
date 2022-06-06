@@ -10,4 +10,6 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
 
     List<Animal> findByNameContains(String keyword);
 
+    Animal findAnimalById(long id);
+
 }
