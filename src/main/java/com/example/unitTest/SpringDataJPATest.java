@@ -6,14 +6,13 @@ import com.example.springDataJPA.SpringDataJpaApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 
 // If the Unit test and Application class are not in the same package, must add the classes.
 // After start the Application, the unit test start to run.
 @SpringBootTest(classes = SpringDataJpaApplication.class)
-public class HelloTest {
+public class SpringDataJPATest {
 
     @Autowired
     private AnimalRepository animalRepository;

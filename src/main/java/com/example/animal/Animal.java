@@ -1,14 +1,15 @@
 package com.example.animal;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity
+@Entity(name = "Animal")
 public class Animal {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long id;
+
+    @Column(name = "Name")
     private String name;
 
     public Animal(String name) {
