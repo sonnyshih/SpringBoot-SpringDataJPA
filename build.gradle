@@ -13,8 +13,19 @@ repositories {
 }
 
 dependencies {
+    // Spring boot web (MVC)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Thymeleaf (Web page)
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    // Spring boot JPA
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // maria db lib
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+
+    // Unit Test
     implementation 'org.springframework.boot:spring-boot-starter-test:2.7.0'
 }
 

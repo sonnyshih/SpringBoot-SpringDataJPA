@@ -1,4 +1,4 @@
-package com.example.unitTest;
+package com.example.springDataJPAunitTest;
 
 import com.example.animal.Animal;
 import com.example.animal.AnimalRepository;
@@ -19,7 +19,7 @@ public class SpringDataJPATest {
 
     @Test
     public void SpringDataJPA_Query(){
-        System.out.println(animalRepository.findByNameContains("ca"));
+        System.out.println(animalRepository.findByNameContains("is"));
         System.out.println("hello");
     }
 

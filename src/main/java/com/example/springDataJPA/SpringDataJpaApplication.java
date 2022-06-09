@@ -10,17 +10,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import javax.persistence.Entity;
-
 // If the Repository and the Application are not in the same package, must use the @EnableJpaRepositories
 // If the Entity and the Application are not in the same package, must use the @EntityScan
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = {
         "com.example.animal"
 })
-//@ComponentScan(basePackages = {
-//        "com.example.animal"
-//})
+@ComponentScan(basePackages = {
+        "com.example.controllerTest"
+})
 @EntityScan(basePackages = {
         "com.example.animal"
 })

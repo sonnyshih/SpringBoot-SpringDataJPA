@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登入結果</title>
+</head>
+<body>
+Email (方式1): [(${email})] <br>
+Email (方式1): [[${email}]] <br>
+<p th:text="'Email：' + ${email}"></p>
+<p th:text="'Password：' + ${password}"></p>
+
+</body>
+</html>

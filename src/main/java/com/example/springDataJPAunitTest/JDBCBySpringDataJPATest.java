@@ -1,4 +1,4 @@
-package com.example.unitTest;
+package com.example.springDataJPAunitTest;
 
 import com.example.springDataJPA.SpringDataJpaApplication;
 import org.junit.jupiter.api.Test;
