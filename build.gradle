@@ -13,6 +13,9 @@ repositories {
 }
 
 dependencies {
+    // maria db lib
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+
     // Spring boot web (MVC)
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
@@ -22,8 +25,8 @@ dependencies {
     // Spring boot JPA
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-    // maria db lib
-    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    //Spring Boot Developer Tools (Auto update the class and page)
+    developmentOnly("org.springframework.boot:spring-boot-devtools:2.7.0")
 
     // Unit Test
     implementation 'org.springframework.boot:spring-boot-starter-test:2.7.0'

@@ -3,6 +3,7 @@ package com.example.controllerTest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
@@ -33,4 +34,14 @@ public class ModelAndViewController {
         model.addAttribute("message", "Hello from Spring MVC (Model)");
         return new ModelAndView("test/hello");
     }
+
+    @RequestMapping("/popup")
+    public ModelAndView showPopup(@RequestParam(name="message", defaultValue = "Hello from Spring MVC!!") String message, Model model){
+
+        model.addAttribute("message", message);
+//        model.addAttribute("url", "https://www.google.com");
+        model.addAttribute("url", "test2"); // redirect to test2 page
+        return new ModelAndView("test/popup");
+    }
+
 }
