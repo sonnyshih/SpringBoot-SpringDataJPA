@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -34,6 +35,21 @@ public class ModelAndViewController {
         model.addAttribute("message", "Hello from Spring MVC (Model)");
         return new ModelAndView("test/hello");
     }
+
+    @RequestMapping("/test3")
+    public ModelAndView testModelAndView3(){
+
+
+        return getModelAndView();
+    }
+
+    private ModelAndView getModelAndView(){
+        Map<String, Object> model = new HashMap<>();
+        model.put("number", 1234);
+        model.put("message", "Hello from Spring MVC (return Model and view)");
+        return new ModelAndView("test/hello", model);
+    }
+
 
     @RequestMapping("/popup")
     public ModelAndView showPopup(@RequestParam(name="message", defaultValue = "Hello from Spring MVC!!") String message, Model model){
