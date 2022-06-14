@@ -60,4 +60,10 @@ public class ModelAndViewController {
         return new ModelAndView("test/popup");
     }
 
+
+    @RequestMapping("/redirectTest")
+    public ModelAndView redirectTest(){
+        System.out.println("我要轉址了~~");
+        return new ModelAndView("redirect:/test3");
+    }
 }
