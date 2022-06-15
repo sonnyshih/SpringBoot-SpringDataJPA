@@ -18,4 +18,10 @@ public class MultiPathController {
 
         return "manage/member";
     }
+
+    @RequestMapping(path = "testRedirect", method= RequestMethod.GET)
+    public String testRedirect(){
+
+        return "redirect:manager/member";
+    }
 }
