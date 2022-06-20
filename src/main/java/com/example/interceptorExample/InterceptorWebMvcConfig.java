@@ -11,7 +11,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * "不要" 在 @Configuration 下面加 @EnableWebMvc，因為Interceptor 預設 static下的js, css... 資料會被攔截
  * */
 @Configuration
-@EnableWebMvc
 public class InterceptorWebMvcConfig implements WebMvcConfigurer {
 
     @Autowired
