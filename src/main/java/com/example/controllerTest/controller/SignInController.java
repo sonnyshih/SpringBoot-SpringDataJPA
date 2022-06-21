@@ -12,9 +12,6 @@ public class SignInController {
 
     @GetMapping("/signInForm")
     public String signInForm() {
-        /**
-         *  Attention: Cause having the com.example.interceptorExample/InterceptorWebMvcConfig.java, must set the addResourceHandlers
-         */
 
         return "signIn_form";
     }
