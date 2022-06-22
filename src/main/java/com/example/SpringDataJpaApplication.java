@@ -4,21 +4,31 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-// If the Repository and the Application are not in the same package, must use the @EnableJpaRepositories
-// If the Entity and the Application are not in the same package, must use the @EntityScan
+/**
+ * 1. 建議把 SpringBootApplication 放在 package最上層，就要就不需要做以下的設定
+ * 2. If the Repository and the Application are not in the same package, must use the @EnableJpaRepositories
+ * 3. If the Entity and the Application are not in the same package, must use the @EntityScan
+*/
 @SpringBootApplication
-//@EnableJpaRepositories(basePackages = {
-//        "com.example.animal",
-//        "com.example.fullDemo.entity"
-//})
-//@ComponentScan(basePackages = {
-//        "com.example.controllerTest",
-//        "com.example.interceptorExample",
-//        "com.example.animal"
-//})
-//@EntityScan(basePackages = {
-//        "com.example.animal"
-//})
+/**
+ * 如果 SpringBootApplication 是放在所有的package最上層，就不需要做以下的設定
+@EnableJpaRepositories(basePackages = {
+        "com.example.animal",
+        "com.example.fullDemo.entity"
+})
+@ComponentScan(basePackages = {
+        "com.example.controllerTest",
+        "com.example.interceptorExample",
+        "com.example.animal"
+})
+@EntityScan(basePackages = {
+        "com.example.animal"
+})
+*/
+
+/**
+ * 如果 SpringBootApplication 是放在所有的package最上層，就只要做以下的設定就好
+ */
 @ComponentScan(basePackages = {
         "com.example.*"
 })

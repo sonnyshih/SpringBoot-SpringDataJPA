@@ -13,14 +13,47 @@
 </head>
 <body>
 
+<a th:href="@{/animal/add}">新增</a><br>
+
 動物清單
 <div class="row" th:each="item : ${list}">
     <div class="col-2" th:text="${item.id}"></div>
     <div class="col-2" th:text="${item.name}"></div>
+    <div class="col-2"><button type="button" id="deleteButton" name="deleteButton" th:onclick="'onDeleteClick(\''+ ${item.id} + '\')'">刪除</button></div>
+    <div class="col-2"><button type="button" id="editButton" name="editButton" th:onclick="'onEditClick(\''+ ${item.id} + '\')'">編輯</button></div>
 </div>
 
 
-
-
 </body>
+<script type="text/javascript">
+    $(function(){
+
+
+    });
+
+    function onDeleteClick(id){
+        if(!confirm("確定要刪除?")){
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/animal/delete",
+            data: {
+                "id" :id
+            },
+            success: function(data, status)
+            {
+                alert(data.message);
+                location.href="/animal/list";
+            }
+        });
+    }
+
+    function onEditClick(id){
+        location.href="/animal/edit?id="+id;
+    }
+
+
+</script>
 </html>

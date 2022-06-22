@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登入</title>
+
+    <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+
+<form id="form" method="post">
+    動物姓名: <input type="text" id="name" name="name" th:value="${animal!=null} ? ${animal.name} : ''"><br>
+    ID: <input type="text" id="id" name="id" th:value="${animal!=null} ? ${animal.id} : ''" readonly><br>
+    動作:<input type="text" id="action" name="action" th:value="${action}" readonly><br>
+
+    <button type="button" id="actionButton" name="actionButton" >[[${buttonName}]]</button>
+</form>
+
+</body>
+
+<script th:inline="javascript" type="text/javascript">
+    $(function(){
+
+        initActionButtonClick()
+    });
+
+    function initActionButtonClick(){
+
+        $("#actionButton").click(function (){
+            $.ajax({
+                type: "POST",
+                url: [[${"/animal/" + action}]],
+                data: $("#form").serialize(),
+                success: function(data, status)
+                {
+                    alert(data.message);
+                    location.href="/animal/list";
+                }
+            });
+
+        });
+
+    }
+
+
+</script>
+
+</html>
