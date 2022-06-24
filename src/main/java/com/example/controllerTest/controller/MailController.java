@@ -17,10 +17,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 
 import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,10 +42,13 @@ public class MailController {
     freemarker.template.Configuration freemarkerConfig;
     @RequestMapping(path = "mailTest", method = GET)
     @ResponseBody
-    public MessageEntity<String> mailTest(HttpSession session, SessionStatus sessionStatus) {
+    public MessageEntity<String> mailTest(HttpSession session, SessionStatus sessionStatus) throws UnsupportedEncodingException {
 
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("jobtestshih1@gmail.com");
+
+        InternetAddress fromInternetAddress = new InternetAddress("jobtestshih1@gmail.com", "Job Test Shih");
+        message.setFrom(String.valueOf(fromInternetAddress));
+//        message.setFrom("jobtestshih1@gmail.com");
         message.setTo("sonnyshih@gmail.com");
         message.setSubject("主旨：Hello world1111");
         message.setText("內容：這是一封測試信件，恭喜您成功發送了唷");
