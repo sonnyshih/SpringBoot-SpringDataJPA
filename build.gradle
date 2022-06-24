@@ -31,6 +31,9 @@ dependencies {
     // Spring boot JavaMail
     implementation 'org.springframework.boot:spring-boot-starter-mail:2.7.0'
 
+    // Spring boot freemarker
+    implementation 'org.springframework.boot:spring-boot-starter-freemarker:2.7.0'
+
     // Unit Test
     implementation 'org.springframework.boot:spring-boot-starter-test:2.7.0'
 }
