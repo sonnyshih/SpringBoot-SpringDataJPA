@@ -28,6 +28,9 @@ dependencies {
     //Spring Boot Developer Tools (Auto update the class and page)
     developmentOnly("org.springframework.boot:spring-boot-devtools:2.7.0")
 
+    // Spring boot JavaMail
+    implementation 'org.springframework.boot:spring-boot-starter-mail:2.7.0'
+
     // Unit Test
     implementation 'org.springframework.boot:spring-boot-starter-test:2.7.0'
 }
