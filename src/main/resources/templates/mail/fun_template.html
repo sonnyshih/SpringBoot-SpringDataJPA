@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    Hi ${member.name}:
+</div>
+<#assign Util=statics['com.example.controllerTest.controller.mailAndFreemarkerController.Config']>
+action=${Util.ACTION_INSERT}<br>
+printString=${Util.getHelloString()} <br>
+
+<#list testMap?keys as key>
+${key} = ${testMap[key]} <br>
+</#list>
+AAAA=${testMap['1']}
+
+<br>----  使用map ----------<br>
+方法1 (key 使用字串): <br>
+<#list users1?keys as gender>
+<h3>${gender}</h3>
+<ul>
+    <#list users1[gender] as user>
+    <li>${user}</li>
+</#list>
+</ul>
+</#list>
+
+<br>--------------<br>
+方法2 (key 使用enum): <br>
+<#list users2?keys as gender>
+<h3>${gender}</h3>
+<ul>
+    <#list users2?api.get(gender) as user>
+    <li>${user}</li>
+</#list>
+</ul>
+</#list>
+
+
+<br>--------------<br>
+方法3 (key 使用integer): <br>
+BBB = ${models3?api.get(1?int)}<BR>
+
+
+<div>
+    姓名: ${member.name}<br>
+    保險清單: ${Util.INSURANCE_MAP['2']}<br>
+    保險清單: ${Util.INSURANCE_MAP}<br>
+    <#assign userMap={"1":"刘德华","2":"张学友"}/>
+    <#--取map中的值-->
+    ${userMap["1"]}
+</div>
+</body>
+</html>
