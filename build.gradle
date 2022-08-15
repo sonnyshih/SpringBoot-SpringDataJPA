@@ -34,6 +34,11 @@ dependencies {
     // Spring boot freemarker
     implementation 'org.springframework.boot:spring-boot-starter-freemarker:2.7.0'
 
+    // for auto add the getting/setting function in the entity
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+
     // Unit Test
     implementation 'org.springframework.boot:spring-boot-starter-test:2.7.0'
 }

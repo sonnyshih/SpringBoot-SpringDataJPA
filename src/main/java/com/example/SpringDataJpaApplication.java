@@ -1,7 +1,9 @@
 package com.example;
 
+import com.example.testProperties.SystemProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
@@ -35,9 +37,15 @@ import org.springframework.context.annotation.ComponentScan;
 public class SpringDataJpaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringDataJpaApplication.class, args);
+        ApplicationContext ctx = SpringApplication.run(SpringDataJpaApplication.class, args);
+        SystemProperties systemProperties = ctx.getBean(SystemProperties.class);
+
+        System.out.println(systemProperties.getName());
+        System.out.println(systemProperties.getUrl());
+        System.out.println(systemProperties.getPort());
 
         // The SQL action demo can refer to unitTest/HelloTest class
+
     }
 
 //    @Bean
