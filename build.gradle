@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     // maria db lib
-    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:2.7.3'
 
     // Spring boot web (MVC)
     implementation 'org.springframework.boot:spring-boot-starter-web'
