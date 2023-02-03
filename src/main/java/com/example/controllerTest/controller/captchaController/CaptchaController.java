@@ -1,7 +1,6 @@
 package com.example.controllerTest.controller.captchaController;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,26 +13,29 @@ import java.awt.image.BufferedImage;
 import java.io.OutputStream;
 
 @RestController
-@RequestMapping("verify")
-public class VerifyController {
+@RequestMapping("authImage")
+public class CaptchaController {
 
     @GetMapping("/abc")
     public String index() {
         return "Hello World!";
     }
 
-    @GetMapping("/getcode")
+    @GetMapping("/getCaptcha")
     public void getCode(HttpServletResponse response, HttpServletRequest request) throws Exception {
         // 获取到session
         HttpSession session = request.getSession();
         // 取到sessionid
         String id = session.getId();
 
+        char[] chars = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+
         // 利用图片工具生成图片
         // 返回的数组第一个参数是生成的验证码，第二个参数是生成的图片
-        Object[] objs = VerifyUtil.newBuilder()
+        Object[] objs = CaptchaUtil.newBuilder()
                 .setWidth(200)      // 預設圖片寬度
                 .setHeight(60)      // 預設圖片高度
+//                .setChars(chars)    // 設定字集 (如果沒設定，就會用預設的字集)
                 .setSize(6)         // 預設字數
                 .setLines(5)        // 預設干擾線條數
                 .setFontSize(30)    // 預設字體大小
@@ -65,7 +67,7 @@ public class VerifyController {
         ImageIO.write(image, "png", os);
     }
 
-    @GetMapping("/checkcode")
+    @GetMapping("/checkCaptcha")
     public String checkCode(String code, HttpServletRequest request) {
         HttpSession session = request.getSession();
         String id = session.getId();
@@ -83,7 +85,7 @@ public class VerifyController {
         String serverCode = (String) session.getAttribute("SESSION_VERIFY_CODE_" + id);
         // 校验验证码
         if (null == serverCode || null == code || !serverCode.toUpperCase().equals(code.toUpperCase())) {
-            return "验证码错误!";
+            return "驗証碼錯誤!";
         }
 
         // 验证通过之后手动将验证码失效
@@ -91,6 +93,6 @@ public class VerifyController {
 
         // 这里做具体业务相关
 
-        return "验证码正确!";
+        return "驗証碼正確!";
     }
 }

@@ -8,15 +8,12 @@ import java.util.Random;
 /**
  * refer to: https://www.cnblogs.com/ming-blogs/p/16271358.html
  * */
-public class VerifyUtil {
+public class CaptchaUtil {
 
     /**
      *  預設驗証碼字集
      */
-    private static final char[] chars = {
-            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+    private final char[] CHARS;
     /**
      * 預設字符数量
      */
@@ -54,7 +51,8 @@ public class VerifyUtil {
      *
      * @param builder
      */
-    private VerifyUtil(Builder builder) {
+    private CaptchaUtil(Builder builder) {
+        CHARS = builder.chars;
         SIZE = builder.size;
         LINES = builder.lines;
         WIDTH = builder.width;
@@ -131,10 +129,10 @@ public class VerifyUtil {
             int x = (i * codeWidth) + (codeWidth / 2);
 
             // 隨機取字索引
-            int n = ran.nextInt(chars.length);
+            int n = ran.nextInt(CHARS.length);
 
             // 得到字
-            String code = String.valueOf(chars[n]);
+            String code = String.valueOf(CHARS[n]);
 
             // 畫字到圖中
             graphic.drawString(code, x, y);
@@ -169,6 +167,11 @@ public class VerifyUtil {
      * 构造器对象
      */
     public static class Builder {
+        // 預設驗証碼字集
+        private char[] chars = {
+                '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+                'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
         // 預設字符数量
         private int size = 4;
         // 預設干擾線數量
@@ -184,6 +187,11 @@ public class VerifyUtil {
         private int thetaDegree = 30;
         //背景顏色
         private Color backgroundColor = Color.LIGHT_GRAY;
+
+        public Builder setChars(char[] chars) {
+            this.chars = chars;
+            return this;
+        }
 
         public Builder setSize(int size) {
             this.size = size;
@@ -225,8 +233,8 @@ public class VerifyUtil {
             return this;
         }
 
-        public VerifyUtil build() {
-            return new VerifyUtil(this);
+        public CaptchaUtil build() {
+            return new CaptchaUtil(this);
         }
     }
 
