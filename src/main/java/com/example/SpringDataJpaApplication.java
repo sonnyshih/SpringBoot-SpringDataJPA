@@ -3,6 +3,7 @@ package com.example;
 import com.example.testProperties.SystemProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -16,6 +17,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 @SpringBootApplication
 @ComponentScan(basePackages = {
+        "com.example.*"
+})
+@ServletComponentScan(basePackages = {
         "com.example.*"
 })
 public class SpringDataJpaApplication {
